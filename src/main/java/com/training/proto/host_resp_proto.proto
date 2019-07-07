@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package gen;
+option java_package = "com.training.fnsrv.protobuff.gen";
+
+message HostResponse {
+    uint64 id = 1;
+    enum Status {
+        NEW = 0;
+        INPROGRESS = 1;
+        DONE = 2;
+        ERROR = 3;
+    }
+    Status status = 2;
+}

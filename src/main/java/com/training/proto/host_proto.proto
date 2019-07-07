@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package gen;
+option java_package = "com.training.proto.gen";
+
+message Host {
+    int64 id = 1;
+    int64 request_id = 2;
+    string ip_address = 3;
+    string user = 4;
+    string password = 5;
+
+    message IpAddress {
+        int64 id = 1;
+        string addr = 2;
+        string netmask = 3;
+    }
+
+    message IpInterface {
+        int64 id = 1;
+        string name = 2;
+        string mac_address = 3;
+        IpAddress ip_address = 4;
+        int32 mtu = 5;
+    }
+
+    message IpRoute {
+        int64 id = 1;
+        string destination = 2;
+        string gateway = 3;
+        string genmask = 4;
+        string flags = 5;
+        int32 metric = 6;
+        int32 refs =7;
+        IpInterface iface = 8;
+    }
+
+    repeated IpInterface ip_interfaces = 6;
+    repeated IpRoute ip_routes = 7;
+}
